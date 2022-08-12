@@ -107,10 +107,10 @@ class TestRadio {
     public void shouldNotVolumeUpOverMax() {
         Radio fm = new Radio();
 
-        fm.setCurrentVolume(10);
+        fm.setCurrentVolume(100);
         fm.volumeUp();
 
-        int expected = 10;
+        int expected = 100;
         int actual = fm.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -119,11 +119,11 @@ class TestRadio {
     public void shouldBeMax() {
         Radio fm = new Radio();
 
-        fm.setCurrentVolume(10);
+        fm.setCurrentVolume(100);
         fm.volumeUp();
         fm.volumeUp();
 
-        int expected = 10;
+        int expected = 100;
         int actual = fm.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -183,7 +183,7 @@ class TestRadio {
     public void shouldNotBeCurrentVolumeDownOverMax() {
         Radio fm = new Radio();
 
-        fm.setCurrentVolume(11);
+        fm.setCurrentVolume(110);
         fm.volumeDown();
 
         int expected = 0;
