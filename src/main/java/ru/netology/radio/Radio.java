@@ -24,15 +24,21 @@ public class Radio {
 
 
     public void volumeUp() {
-        if (currentVolume < 10 & currentVolume >= 0) {
+        if (currentVolume < 10 ) {
             currentVolume = currentVolume + 1;
+        }
+        else {
+            currentVolume = 10;
         }
 
     }
 
     public void volumeDown() {
-        if (currentVolume <= 10 & currentVolume > 0) {
+        if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
+        }
+        else {
+            currentVolume = 0;
         }
 
     }
@@ -47,13 +53,11 @@ public class Radio {
     }
 
     public void prev() {
-        if (currentStation < 9) {
+        if (currentStation > 0) {
             currentStation = currentStation - 1;
         }
-        if (currentStation < 0) {
+        else
             currentStation = 9;
         }
 
-
-    }
 }
