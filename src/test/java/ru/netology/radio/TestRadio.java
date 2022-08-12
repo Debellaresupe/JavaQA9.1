@@ -19,6 +19,30 @@ class TestRadio {
         Assertions.assertEquals(expected,actual);
     }
     @Test
+    public void shouldSwitchNextStationToOne() {
+        Radio fm = new Radio();
+
+        fm.setCurrentStation(10);
+        fm.next();
+
+        int expected = 1;
+        int actual = fm.getCurrentStation();
+
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public void shouldSwitchNextStationToNine() {
+        Radio fm = new Radio();
+
+        fm.setCurrentStation(-1);
+        fm.prev();
+
+        int expected = 9;
+        int actual = fm.getCurrentStation();
+
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
     public void shouldSwitchToMinStationOverMax() {
         Radio fm = new Radio();
 
@@ -135,6 +159,31 @@ class TestRadio {
 
         fm.setCurrentVolume(1);
         fm.volumeDown();
+        fm.volumeDown();
+
+        int expected = 0;
+        int actual = fm.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldNotBeCurrentVolumeDownBelowMin() {
+        Radio fm = new Radio();
+
+        fm.setCurrentVolume(-1);
+        fm.volumeDown();
+
+        int expected = 0;
+        int actual = fm.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+    @Test
+    public void shouldNotBeCurrentVolumeDownOverMax() {
+        Radio fm = new Radio();
+
+        fm.setCurrentVolume(11);
         fm.volumeDown();
 
         int expected = 0;
