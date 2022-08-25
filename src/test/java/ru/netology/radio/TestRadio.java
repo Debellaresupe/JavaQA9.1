@@ -8,7 +8,7 @@ class TestRadio {
 
     @Test
     public void shouldSwitchNextStation() {
-        Radio fm = new Radio(0,0,0,9,0,100);
+        Radio fm = new Radio();
 
         fm.setCurrentStation(8);
         fm.next();
