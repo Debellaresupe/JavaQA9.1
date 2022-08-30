@@ -5,6 +5,23 @@ public class Radio {
     private int currentVolume;
     private int currentStation;
 
+    private int minStation = 0;
+    private int maxStation = 9;
+    private int minVolume = 0;
+    private int maxVolume = 100;
+
+    public Radio() {
+    }
+
+    public Radio(int currentVolume, int currentStation, int minStation, int maxStation, int minVolume, int maxVolume) {
+        this.currentVolume = currentVolume;
+        this.currentStation = currentStation;
+        this.minStation = minStation;
+        this.maxStation = maxStation;
+        this.minVolume = minVolume;
+        this.maxVolume = maxVolume;
+    }
+
     public int getCurrentVolume() {
         return currentVolume;
     }
@@ -13,19 +30,20 @@ public class Radio {
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
+
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
-        if (newCurrentStation < 0) {
+        if (newCurrentStation < minStation) {
             return;
         }
         currentStation = newCurrentStation;
@@ -33,40 +51,37 @@ public class Radio {
 
 
     public void volumeUp() {
-        if (currentVolume < 10 ) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
-        }
-        else {
-            currentVolume = 10;
+        } else {
+            currentVolume = maxVolume;
         }
 
     }
 
     public void volumeDown() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
-        }
-        else {
-            currentVolume = 0;
+        } else {
+            currentVolume = minVolume;
         }
 
     }
 
     // "next" следующая станция
     public void next() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation = currentStation + 1;
         } else {
-            currentStation = 0;
+            currentStation = minStation;
         }
     }
 
     public void prev() {
-        if (currentStation > 0) {
+        if (currentStation > minStation) {
             currentStation = currentStation - 1;
-        }
-        else
-            currentStation = 9;
+        } else
+            currentStation = maxStation;
         }
 
 }
